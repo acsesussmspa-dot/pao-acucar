@@ -13,6 +13,8 @@
     --fundo: #f6f3fa;
     --texto: #2c2438;
     --borda: #d9c9ec;
+    --alerta: #b45309;
+    --alerta-fundo: #fef3e2;
     --erro-fundo: #f8d7da;
     --erro-texto: #721c24;
   }
@@ -58,23 +60,25 @@
 
   header h1 {
     margin: 0;
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 22px;
   }
 
   header p {
-    margin: 8px 0 0;
-    font-size: 13px;
-    color: #e5daf5;
-    max-width: 90%;
+    margin: 6px 0 0;
+    font-size: 14px;
+    color: #e4d6f5;
   }
 
   form {
     background: #fff;
+    padding: 22px;
+    border-radius: 0 0 12px 12px;
     border: 1px solid var(--borda);
     border-top: none;
-    border-radius: 0 0 12px 12px;
-    padding: 24px 22px 30px;
+  }
+
+  .secao {
+    margin-bottom: 22px;
   }
 
   .secao-titulo {
@@ -83,34 +87,35 @@
     color: var(--roxo-medio);
     text-transform: uppercase;
     letter-spacing: 0.4px;
-    margin: 0 0 14px;
-    padding-top: 6px;
+    margin: 0 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--roxo-claro2);
   }
 
-  .secao-titulo.com-margem { margin-top: 26px; }
-
-  .campo { margin-bottom: 16px; }
+  .campo {
+    margin-bottom: 14px;
+  }
 
   label {
     display: block;
     font-size: 13px;
     font-weight: 600;
-    color: var(--texto);
     margin-bottom: 5px;
+    color: var(--texto);
   }
 
-  .obrigatorio { color: #c0392b; }
-  .opcional { font-weight: 400; color: #8a7a9c; font-size: 12px; }
+  label .obrigatorio {
+    color: var(--alerta);
+  }
 
   input, select, textarea {
     width: 100%;
     padding: 10px 12px;
     border: 1px solid var(--borda);
-    border-radius: 7px;
+    border-radius: 6px;
     font-size: 14px;
     font-family: inherit;
-    background: #fbfaFC;
-    color: var(--texto);
+    background: #fbfcfa;
   }
 
   input:focus, select:focus, textarea:focus {
@@ -119,278 +124,287 @@
     background: #fff;
   }
 
-  textarea { min-height: 70px; resize: vertical; }
+  textarea {
+    min-height: 80px;
+    resize: vertical;
+  }
 
-  .linha-dupla { display: flex; gap: 12px; }
-  .linha-dupla .campo { flex: 1; }
+  .linha-dupla {
+    display: flex;
+    gap: 12px;
+  }
 
-  .bloco-periodo {
+  .linha-dupla .campo {
+    flex: 1;
+  }
+
+  .unidade-fixa {
     background: var(--roxo-claro);
-    border-radius: 8px;
-    padding: 12px 14px 2px;
-    margin-bottom: 14px;
-  }
-
-  .bloco-periodo .periodo-titulo {
-    font-size: 12px;
-    font-weight: 700;
     color: var(--roxo-escuro);
-    margin-bottom: 8px;
+    font-weight: 600;
+    border: 1px solid #b7a2d9;
   }
 
-  .cartao-ocorrencia {
-    border: 1px solid var(--borda);
-    border-radius: 10px;
-    padding: 18px 16px 6px;
-    margin-bottom: 16px;
+  .ocorrencia-bloco {
+    border: 1px solid var(--roxo-claro2);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 14px;
     position: relative;
     background: #fdfcff;
   }
 
-  .tag-ocorrencia {
-    display: inline-block;
-    background: var(--roxo-claro2);
-    color: var(--roxo-escuro);
-    font-size: 12px;
-    font-weight: 700;
-    padding: 4px 12px;
-    border-radius: 20px;
-    margin-bottom: 14px;
-  }
-
-  .btn-remover {
+  .ocorrencia-bloco .remover {
     position: absolute;
-    top: 14px;
-    right: 14px;
+    top: 10px;
+    right: 12px;
     background: none;
     border: none;
-    color: #a04050;
+    color: #a33;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    width: auto;
+    margin: 0;
+  }
+
+  .ocorrencia-numero {
     font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 4px 8px;
-  }
-
-  .btn-adicionar {
-    width: 100%;
-    padding: 12px;
-    background: #fff;
-    border: 2px dashed var(--roxo-medio);
+    font-weight: 700;
     color: var(--roxo-medio);
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    margin: 4px 0 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
   }
 
-  .btn-adicionar:hover { background: var(--roxo-claro); }
+  #btnAdicionarOcorrencia {
+    background: #fff;
+    color: var(--roxo-medio);
+    border: 1.5px dashed var(--roxo-medio);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
 
-  button[type="submit"] {
+  #btnAdicionarOcorrencia:hover {
+    background: var(--roxo-claro);
+  }
+
+  button {
     width: 100%;
-    padding: 14px;
+    padding: 13px;
     background: var(--roxo-escuro);
     color: #fff;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
+    margin-top: 6px;
     transition: background 0.15s;
   }
 
-  button[type="submit"]:hover { background: var(--roxo-medio); }
-  button[type="submit"]:disabled { background: #b3a3c4; cursor: not-allowed; }
+  button:hover { background: var(--roxo-medio); }
+  button:disabled { background: #b7a2d9; cursor: not-allowed; }
 
   .status {
     margin-top: 14px;
     padding: 12px 14px;
-    border-radius: 7px;
+    border-radius: 6px;
     font-size: 14px;
     text-align: center;
     display: none;
   }
 
-  .status.sucesso { display: block; background: var(--roxo-claro); color: var(--roxo-escuro); }
-  .status.erro { display: block; background: var(--erro-fundo); color: var(--erro-texto); }
+  .status.sucesso {
+    display: block;
+    background: var(--roxo-claro);
+    color: var(--roxo-escuro);
+  }
 
-  hr.divisor {
-    border: none;
-    border-top: 1px solid var(--borda);
-    margin: 22px 0 0;
+  .status.erro {
+    display: block;
+    background: var(--erro-fundo);
+    color: var(--erro-texto);
   }
 </style>
 </head>
 <body>
 <div class="container">
   <header>
-    <p class="eyebrow">Esf Pão de Açúcar · Pouso Alegre</p>
-    <h1>Tratativas de Ponto</h1>
-    <p>Registre uma ou mais ocorrências de ponto autorizadas ou solicitadas pela coordenação, tudo numa única tela.</p>
+    <p class="eyebrow">ESF Pão de Açúcar</p>
+    <h1>📋 Tratativas de Registro de Ponto</h1>
+    <p>Preencha uma ou mais ocorrências. Campos com <span style="color:#f5c4a0">*</span> são obrigatórios.</p>
   </header>
 
   <form id="formTratativas">
-    <p class="secao-titulo">Identificação</p>
+    <div class="secao">
+      <p class="secao-titulo">Identificação</p>
 
-    <div class="campo">
-      <label for="nome">Nome do profissional <span class="obrigatorio">*</span></label>
-      <input type="text" id="nome" required placeholder="Nome e sobrenome">
-    </div>
-
-    <div class="linha-dupla">
       <div class="campo">
-        <label for="matricula">Matrícula com dígito <span class="obrigatorio">*</span></label>
-        <input type="text" id="matricula" required placeholder="Ex: 16367-1">
+        <label>Unidade</label>
+        <input type="text" class="unidade-fixa" value="Esf Pão de Açúcar" readonly>
       </div>
+
       <div class="campo">
-        <label for="unidade">Unidade <span class="obrigatorio">*</span></label>
-        <input type="text" id="unidade" required value="Esf Pão de Açúcar" placeholder="Ex: ESF Pão de Açúcar">
+        <label for="nome">Nome completo <span class="obrigatorio">*</span></label>
+        <input type="text" id="nome" required>
+      </div>
+
+      <div class="linha-dupla">
+        <div class="campo">
+          <label for="matricula">Matrícula (com dígito) <span class="obrigatorio">*</span></label>
+          <input type="text" id="matricula" required placeholder="Ex: 16367-1">
+        </div>
+        <div class="campo">
+          <label for="cargo">Cargo <span class="obrigatorio">*</span></label>
+          <select id="cargo" required>
+            <option value="" disabled selected>Selecione...</option>
+            <option>Agente Administrativo</option>
+            <option>Agente Comunitário de Saúde</option>
+            <option>Agente Social</option>
+            <option>Auxiliar de dentista</option>
+            <option>Auxiliar de Enfermagem</option>
+            <option>Coordenador(a)</option>
+            <option>Dentista</option>
+            <option>Educador(a) Físico(a)</option>
+            <option>Enfermeiro(a)</option>
+            <option>Fisioterapeuta</option>
+            <option>Fonoaudiólogo(a)</option>
+            <option>Gerente de serviços</option>
+            <option>Médico(a)</option>
+            <option>Nutricionista</option>
+            <option>Psicólogo(a)</option>
+            <option>Técnico em Radiologia</option>
+            <option>Técnico(a) de Enfermagem</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="email">E-mail para confirmação <span class="obrigatorio">*</span></label>
+        <input type="email" id="email" required placeholder="seuemail@gmail.com">
       </div>
     </div>
 
-    <div class="campo">
-      <label for="email">Seu e-mail <span class="opcional">(para receber a confirmação)</span> <span class="obrigatorio">*</span></label>
-      <input type="email" id="email" required placeholder="seuemail@gmail.com">
+    <div class="secao">
+      <p class="secao-titulo">Ocorrências</p>
+      <div id="listaOcorrencias"></div>
+      <button type="button" id="btnAdicionarOcorrencia">+ Adicionar outra ocorrência</button>
     </div>
 
-    <hr class="divisor">
-    <p class="secao-titulo com-margem">Ocorrências</p>
-
-    <div id="listaOcorrencias"></div>
-
-    <button type="button" class="btn-adicionar" id="btnAdicionar">+ Adicionar outra ocorrência</button>
-
-    <button type="submit" id="btnEnviar">Enviar registro(s)</button>
+    <button type="submit" id="btnEnviar">Enviar tratativa(s)</button>
     <div class="status" id="statusMsg"></div>
   </form>
 </div>
 
 <template id="templateOcorrencia">
-  <div class="cartao-ocorrencia">
-    <button type="button" class="btn-remover" style="display:none;">✕ Remover</button>
-    <span class="tag-ocorrencia">Ocorrência <span class="numero-ocorrencia">1</span></span>
+  <div class="ocorrencia-bloco">
+    <button type="button" class="remover">✕ remover</button>
+    <p class="ocorrencia-numero">Ocorrência <span class="num">1</span></p>
 
     <div class="campo">
       <label>Data da ocorrência <span class="obrigatorio">*</span></label>
       <input type="date" class="campo-data" required>
     </div>
 
-    <div class="bloco-periodo">
-      <div class="periodo-titulo">1º Período</div>
-      <div class="linha-dupla">
-        <div class="campo">
-          <label>Entrada</label>
-          <input type="time" class="campo-entrada1">
-        </div>
-        <div class="campo">
-          <label>Saída</label>
-          <input type="time" class="campo-saida1">
-        </div>
-      </div>
-    </div>
-
-    <div class="bloco-periodo">
-      <div class="periodo-titulo">2º Período</div>
-      <div class="linha-dupla">
-        <div class="campo">
-          <label>Entrada</label>
-          <input type="time" class="campo-entrada2">
-        </div>
-        <div class="campo">
-          <label>Saída</label>
-          <input type="time" class="campo-saida2">
-        </div>
-      </div>
-    </div>
-
     <div class="campo">
       <label>Tipo de ocorrência <span class="obrigatorio">*</span></label>
-      <select class="campo-tipo" required>
+      <select class="campo-ocorrencia" required>
         <option value="" disabled selected>Selecione...</option>
-        <option>Atestado de Horas</option>
-        <option>Atraso Superior a 15 Minutos</option>
+        <option>Atestado de Horas (Enviar atestado para Secretaria)</option>
         <option>Esquecimento</option>
-        <option>Equipamento com defeito</option>
-        <option>Serviço fora da Unidade</option>
+        <option>Equipamento com Defeito</option>
+        <option>Problemas na Leitura do Registro</option>
+        <option>Troca de Horário</option>
+        <option>Serviço Fora da Unidade</option>
+        <option>Falta Justificada e Abonada</option>
+        <option>Migrar Registro</option>
+        <option>Compensar Banco de Horas</option>
+        <option>Júri</option>
+        <option>Atraso Superior a 15 Minutos</option>
+        <option>Eleições</option>
+        <option>Casar Batida</option>
+        <option>Criar Horário para Funcionário</option>
         <option>Treinamento</option>
-        <option>Problema na leitura da biometria</option>
-        <option>Banco de Horas</option>
-        <option>Hora Extra</option>
-        <option>Compensação de Banco de Horas</option>
-        <option>Casar batida</option>
-        <option>Falta justificada abonada</option>
-        <option>Transferir Registro</option>
+        <option>Atestado de Dia(s) (Informar Nº Processo Digital)</option>
       </select>
     </div>
 
+    <div class="linha-dupla">
+      <div class="campo">
+        <label>Entrada</label>
+        <input type="time" class="campo-entrada">
+      </div>
+      <div class="campo">
+        <label>Saída</label>
+        <input type="time" class="campo-saida">
+      </div>
+    </div>
+    <p style="font-size:12px;color:#7a6a94;margin:-8px 0 12px;">Preencha só o horário onde ocorreu o problema (entrada, saída, ou os dois).</p>
+
     <div class="campo">
       <label>Justificativa <span class="obrigatorio">*</span></label>
-      <textarea class="campo-justificativa" required placeholder="Descreva o motivo da ocorrência..."></textarea>
+      <textarea class="campo-justificativa" required placeholder="Descreva o motivo da ocorrência"></textarea>
     </div>
   </div>
 </template>
 
 <script>
   // ⚠️ Substitua pela URL do seu Google Apps Script Web App
-  const URL_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbxzu8MtvWkn1V7WBQLbEYFV9a4T3phs9qf4gEPf_mROCN-ax9ODEanz5_jKH2yBcaSV2A/exec";
+  const URL_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbxE_MISca1Dvo36m3ckVPb3Kq8yM06UQ0YvIjZGgTAFykkCXspxrMCE-Ess-sFLd2PUzQ/exec";
 
-  const lista = document.getElementById('listaOcorrencias');
+  const listaOcorrencias = document.getElementById('listaOcorrencias');
   const template = document.getElementById('templateOcorrencia');
-  const btnAdicionar = document.getElementById('btnAdicionar');
   const form = document.getElementById('formTratativas');
-  const btnEnviar = document.getElementById('btnEnviar');
+  const btn = document.getElementById('btnEnviar');
   const statusMsg = document.getElementById('statusMsg');
 
   function renumerar() {
-    const cartoes = lista.querySelectorAll('.cartao-ocorrencia');
-    cartoes.forEach((cartao, i) => {
-      cartao.querySelector('.numero-ocorrencia').textContent = i + 1;
-      cartao.querySelector('.btn-remover').style.display = cartoes.length > 1 ? 'block' : 'none';
+    document.querySelectorAll('.ocorrencia-bloco').forEach((bloco, i) => {
+      bloco.querySelector('.num').textContent = i + 1;
+      bloco.querySelector('.remover').style.display = i === 0 ? 'none' : 'block';
     });
   }
 
   function adicionarOcorrencia() {
     const clone = template.content.cloneNode(true);
-    const cartao = clone.querySelector('.cartao-ocorrencia');
-    cartao.querySelector('.btn-remover').addEventListener('click', () => {
-      cartao.remove();
+    const bloco = clone.querySelector('.ocorrencia-bloco');
+    bloco.querySelector('.remover').addEventListener('click', () => {
+      bloco.remove();
       renumerar();
     });
-    lista.appendChild(clone);
+    listaOcorrencias.appendChild(clone);
     renumerar();
   }
 
-  btnAdicionar.addEventListener('click', adicionarOcorrencia);
-
-  // primeira ocorrência já vem pronta
-  adicionarOcorrencia();
+  document.getElementById('btnAdicionarOcorrencia').addEventListener('click', adicionarOcorrencia);
+  adicionarOcorrencia(); // primeira ocorrência já vem pronta
 
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
 
     const ocorrencias = [];
-    lista.querySelectorAll('.cartao-ocorrencia').forEach(cartao => {
+    document.querySelectorAll('.ocorrencia-bloco').forEach(bloco => {
       ocorrencias.push({
-        data: cartao.querySelector('.campo-data').value,
-        entrada1: cartao.querySelector('.campo-entrada1').value,
-        saida1: cartao.querySelector('.campo-saida1').value,
-        entrada2: cartao.querySelector('.campo-entrada2').value,
-        saida2: cartao.querySelector('.campo-saida2').value,
-        ocorrencia: cartao.querySelector('.campo-tipo').value,
-        justificativa: cartao.querySelector('.campo-justificativa').value
+        data: bloco.querySelector('.campo-data').value,
+        ocorrencia: bloco.querySelector('.campo-ocorrencia').value,
+        entrada: bloco.querySelector('.campo-entrada').value,
+        saida: bloco.querySelector('.campo-saida').value,
+        justificativa: bloco.querySelector('.campo-justificativa').value
       });
     });
 
     const dados = {
+      unidade: "Esf Pão de Açúcar",
       nome: document.getElementById('nome').value,
       matricula: document.getElementById('matricula').value,
-      unidade: document.getElementById('unidade').value,
+      cargo: document.getElementById('cargo').value,
       email: document.getElementById('email').value,
       ocorrencias: ocorrencias
     };
 
-    btnEnviar.disabled = true;
-    btnEnviar.textContent = "Enviando...";
+    btn.disabled = true;
+    btn.textContent = "Enviando...";
     statusMsg.className = "status";
 
     try {
@@ -402,16 +416,16 @@
       });
 
       statusMsg.className = "status sucesso";
-      statusMsg.textContent = "✅ Registro(s) enviado(s) com sucesso!";
+      statusMsg.textContent = "✅ Tratativa(s) enviada(s) com sucesso!";
       form.reset();
-      lista.innerHTML = "";
+      listaOcorrencias.innerHTML = "";
       adicionarOcorrencia();
     } catch (err) {
       statusMsg.className = "status erro";
       statusMsg.textContent = "❌ Erro ao enviar. Tente novamente.";
     } finally {
-      btnEnviar.disabled = false;
-      btnEnviar.textContent = "Enviar registro(s)";
+      btn.disabled = false;
+      btn.textContent = "Enviar tratativa(s)";
     }
   });
 </script>
